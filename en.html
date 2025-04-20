@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ricardo Oliveira - Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+      padding: 1rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #ddd;
+      margin-top: 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      color: #444;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    .footer {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .language-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .language-toggle button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #0077b6;
+      color: #fff;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    a {
+      color: #0077b6;
+      text-decoration: none;
+    }
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .profile-pic {
+        align-self: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>Ricardo Oliveira</h1>
+        <p>Barretos - SP | ricardo13palmeira@gmail.com</p>
+        <p>(17) 98131-1869 / (17) 99102-9169</p>
+      </div>
+      <div class="profile-pic"></div>
+    </div>
+
+    <h2>🔹 Resumo Profissional</h2>
+    <p>Sou um profissional com mais de 5 anos de experiência multidisciplinar...</p>
+
+    <h2>🛠 Habilidades Técnicas</h2>
+    <ul>
+      <li>Suporte técnico (N1 e N2)</li>
+      <li>Redes, IP, Máscara de Sub-rede</li>
+      <li>Desenvolvimento Web (HTML5, CSS3, JS, PHP, PYTHON, etc.)</li>
+      <li>Manutenção de software e sistemas</li>
+      <li>Sistemas: Windows e Linux</li>
+      <li>Power BI, Office e SAP (avançado)</li>
+    </ul>
+
+    <h2>🧠 Soft Skills</h2>
+    <ul>
+      <li>Proatividade e decisão</li>
+      <li>Organização e comprometimento</li>
+      <li>Facilidade no atendimento</li>
+      <li>Agilidade e resiliência</li>
+    </ul>
+
+    <h2>🎓 Formação</h2>
+    <ul>
+      <li>Ensino Médio Completo - Prof Benedito Pererira Cardoso. (2016-2020)</li>
+      <li>Técnico em Desenvolvimento de Sistemas – ETEC Coronel Raphael Brandão. (2020–2022)</li>
+      <li>Graduação Técnica em Linguagens de Programação – ETEC Coronel Raphael Brandão. (2020-2022)</li>
+      <li>Cursos Técnicos em Linguagens de Programações - CCBEU Barretos-Sp</li>
+    </ul>
+
+    <div class="footer">
+      <a href="https://www.linkedin.com/in/ricardopalmeira" target="_blank">LinkedIn</a>
+      <a href="https://wa.me/5517981311869" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="language-toggle">
+    <button onclick="switchLanguage()">🌐 Switch to Portuguese</button>
+  </div>
+
+  <script>
+    function switchLanguage() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
