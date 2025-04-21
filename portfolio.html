@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio - Ricardo Oliveira</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .media-grid img, .media-grid video {
+      width: 100%;
+      border-radius: 0.5rem;
+    }
+    .back-link {
+      margin-top: 2rem;
+      display: block;
+      text-align: center;
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 Portfólio de Feitos - Ricardo Oliveira</h1>
+
+    <div class="section">
+      <h2>📸 Fotos</h2>
+      <div class="media-grid">
+        <img src="/fotos/show1.jpg" alt="Show 1" />
+        <img src="/fotos/show2.jpg" alt="Show 2" />
+        <img src="/fotos/publicacao1.jpg" alt="Publicação 1" />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🎥 Vídeos</h2>
+      <div class="media-grid">
+        <video controls src="/videos/show_ricardo1.mp4"></video>
+        <video controls src="/videos/projeto_demo.mp4"></video>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📰 Publicações</h2>
+      <ul>
+        <li><a href="/publicacoes/artigo1.pdf" target="_blank">Artigo: Desenvolvimento Web Moderno</a></li>
+        <li><a href="/publicacoes/entrevista_jornal.pdf" target="_blank">Entrevista no Jornal de Barretos</a></li>
+      </ul>
+    </div>
+
+    
+  </div><a href="index.html" class="back-link">⬅ Voltar para o currículo</a>
+
+</body>
+</html>
