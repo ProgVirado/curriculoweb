@@ -35,10 +35,11 @@
       margin-bottom: 2rem;
     }
     .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
     .media-grid img, .media-grid video {
       width: 100%;
       border-radius: 0.5rem;
@@ -74,6 +75,43 @@
   text-align: center;
   margin-top: 0.25rem;
 }
+.video-thumb {
+  max-width: 100%;
+  border: 2px solid #e0e0e0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal video {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.modal .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
 
   </style>
 </head>
@@ -94,16 +132,23 @@
         <h2>🎥 Vídeos</h2>
         <div class="media-grid">
           <div>
-            <video controls src="feitos/tcc editado (1).mp4"></video>
+            <video class="video-thumb" src="feitos/tcc editado (1).mp4"></video>
             <p><strong>Trabalho de conclusão de curso.</strong></p>
           </div>
       
           <div>
-            <video controls src="feitos/mario.mp4"></video>
+            <video class="video-thumb" src="feitos/mario.mp4"></video>
             <p><strong>Primeiro Game</strong></p>
           </div>
         </div>
       </div>
+      
+      <!-- Modal -->
+      <div id="videoModal" class="modal">
+        <span class="close">&times;</span>
+        <video id="modalVideo" controls></video>
+      </div>
+      
       
 
     <div class="section">
