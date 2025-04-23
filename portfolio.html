@@ -12,25 +12,6 @@
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
-    .accordion-content ul {
-  margin-top: 1rem;
-  padding-left: 1.2rem;
-}
-
-.accordion-content ul li {
-  margin-bottom: 0.5rem;
-}
-
-.accordion-content a {
-  color: #0077b6;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.accordion-content a:hover {
-  text-decoration: underline;
-}
-
 
     body {
       background: #f7f7f7;
@@ -85,6 +66,25 @@
       animation: fadeIn 0.3s ease-in-out;
     }
 
+    .accordion-content ul {
+      margin-top: 1rem;
+      padding-left: 1.2rem;
+    }
+
+    .accordion-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .accordion-content a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .accordion-content a:hover {
+      text-decoration: underline;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -101,6 +101,7 @@
       border-radius: 0.5rem;
       border: 1px solid #ddd;
       cursor: pointer;
+      object-fit: cover;
     }
 
     .back-link {
@@ -161,9 +162,8 @@
     <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <video src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc.jpg"></video>
-<video src="feitos/mario.mp4" controls poster="/capa/mario.jpg"></video>
-
+        <video src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc.jpg" preload="metadata"></video>
+        <video src="feitos/mario.mp4" controls poster="/capa/mario.jpg" preload="metadata"></video>
       </div>
     </details>
 
