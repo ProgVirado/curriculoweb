@@ -96,10 +96,22 @@
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 
-    .media-grid img {
+    .media-grid img, .media-grid video {
       width: 100%;
       border-radius: 0.5rem;
       border: 1px solid #ddd;
+      cursor: pointer;
+      object-fit: cover;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .video-cover {
+      width: 100%;
+      border-radius: 0.5rem;
       cursor: pointer;
       object-fit: cover;
     }
@@ -113,6 +125,7 @@
       text-decoration: none;
     }
 
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -127,10 +140,11 @@
       padding: 1rem;
     }
 
-    .modal video {
+    .modal-content {
       max-width: 90%;
       max-height: 80%;
       border-radius: 0.5rem;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     }
 
     .modal .close {
@@ -160,8 +174,18 @@
     <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <img src="/capa/tcc.png" alt="Capa TCC" onclick="playVideo('feitos/tcc editado (1).mp4')">
-        <img src="/capa/mario.png" alt="Capa Mario" onclick="playVideo('feitos/mario.mp4')">
+        <div class="video-wrapper">
+          <img src="/capa/tcc.png" alt="Capa TCC" class="video-cover" onclick="playVideo(this)">
+          <video style="display:none;" controls>
+            <source src="feitos/tcc.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-wrapper">
+          <img src="/capa/mario.png" alt="Capa Mario" class="video-cover" onclick="playVideo(this)">
+          <video style="display:none;" controls>
+            <source src="feitos/mario.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
     </details>
 
@@ -179,32 +203,46 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal" id="videoModal">
-    <span class="close" onclick="closeVideo()">&times;</span>
-    <video id="videoPlayer" controls playsinline muted></video>
+  <div class="modal" id="modal">
+    <span class="close" id="closeModal">&times;</span>
+    <div id="modalContent"></div>
   </div>
 
   <script>
-    function playVideo(src) {
-      const modal = document.getElementById('videoModal');
-      const player = document.getElementById('videoPlayer');
-      player.src = src;
-      modal.style.display = 'flex';
-      player.play();
+    function playVideo(img) {
+      const video = img.nextElementSibling;
+      img.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
     }
 
-    function closeVideo() {
-      const modal = document.getElementById('videoModal');
-      const player = document.getElementById('videoPlayer');
-      modal.style.display = 'none';
-      player.pause();
-      player.src = '';
-    }
+    const modal = document.getElementById("modal");
+    const closeModal = document.getElementById("closeModal");
+    const modalContent = document.getElementById("modalContent");
 
-    window.addEventListener('click', (e) => {
-      const modal = document.getElementById('videoModal');
+    document.querySelectorAll(".media-grid img:not(.video-cover), .media-grid video").forEach(el => {
+      el.addEventListener("click", () => {
+        const clone = el.cloneNode(true);
+        clone.classList.add("modal-content");
+        if (clone.tagName === "VIDEO") {
+          clone.setAttribute("controls", true);
+          clone.removeAttribute("muted");
+        }
+        modalContent.innerHTML = '';
+        modalContent.appendChild(clone);
+        modal.style.display = "flex";
+      });
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+      modalContent.innerHTML = '';
+    });
+
+    window.addEventListener("click", (e) => {
       if (e.target === modal) {
-        closeVideo();
+        modal.style.display = "none";
+        modalContent.innerHTML = '';
       }
     });
   </script>
