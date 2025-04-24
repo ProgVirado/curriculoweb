@@ -28,7 +28,7 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.05);
     }
 
-    h1 {
+    h1, h2 {
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 2rem;
@@ -104,18 +104,6 @@
       object-fit: cover;
     }
 
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-    }
-
-    .video-cover {
-      width: 100%;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      object-fit: cover;
-    }
-
     .back-link {
       display: block;
       text-align: center;
@@ -125,7 +113,6 @@
       text-decoration: none;
     }
 
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -162,6 +149,9 @@
   <div class="container">
     <h1>🎬 Portfólio de Feitos</h1>
 
+    <h2>🔧 Teste Vídeo Fora do Accordion</h2>
+    <video src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc-editado.png" preload="auto" playsinline muted style="width:100%;border:1px solid #ccc;border-radius:8px;"></video>
+
     <details class="accordion">
       <summary>📸 Fotos</summary>
       <div class="accordion-content media-grid">
@@ -174,18 +164,8 @@
     <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <div class="video-wrapper">
-          <img src="/capa/tcc.png" alt="Capa TCC" class="video-cover" onclick="playVideo(this)">
-          <video style="display:none;" controls>
-            <source src="feitos/tcc.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="video-wrapper">
-          <img src="/capa/mario.png" alt="Capa Mario" class="video-cover" onclick="playVideo(this)">
-          <video style="display:none;" controls>
-            <source src="feitos/mario.mp4" type="video/mp4">
-          </video>
-        </div>
+        <video src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc.png" preload="auto" playsinline muted></video>
+        <video src="feitos/mario.mp4" controls poster="/capa/mario.png" preload="auto" playsinline muted></video>
       </div>
     </details>
 
@@ -202,25 +182,17 @@
     <a href="index.html" class="back-link">⬅ Voltar para o currículo</a>
   </div>
 
-  <!-- Modal -->
   <div class="modal" id="modal">
     <span class="close" id="closeModal">&times;</span>
     <div id="modalContent"></div>
   </div>
 
   <script>
-    function playVideo(img) {
-      const video = img.nextElementSibling;
-      img.style.display = 'none';
-      video.style.display = 'block';
-      video.play();
-    }
-
     const modal = document.getElementById("modal");
     const closeModal = document.getElementById("closeModal");
     const modalContent = document.getElementById("modalContent");
 
-    document.querySelectorAll(".media-grid img:not(.video-cover), .media-grid video").forEach(el => {
+    document.querySelectorAll(".media-grid img, .media-grid video").forEach(el => {
       el.addEventListener("click", () => {
         const clone = el.cloneNode(true);
         clone.classList.add("modal-content");
