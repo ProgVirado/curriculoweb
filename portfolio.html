@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio - Ricardo Oliveira</title>
+  <title>Portfólio - Ricardo Oliveira</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -12,25 +12,6 @@
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
-    .accordion-content ul {
-  margin-top: 1rem;
-  padding-left: 1.2rem;
-}
-
-.accordion-content ul li {
-  margin-bottom: 0.5rem;
-}
-
-.accordion-content a {
-  color: #0077b6;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.accordion-content a:hover {
-  text-decoration: underline;
-}
-
 
     body {
       background: #f7f7f7;
@@ -85,6 +66,25 @@
       animation: fadeIn 0.3s ease-in-out;
     }
 
+    .accordion-content ul {
+      margin-top: 1rem;
+      padding-left: 1.2rem;
+    }
+
+    .accordion-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .accordion-content a {
+      color: #0077b6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .accordion-content a:hover {
+      text-decoration: underline;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -101,6 +101,7 @@
       border-radius: 0.5rem;
       border: 1px solid #ddd;
       cursor: pointer;
+      object-fit: cover;
     }
 
     .back-link {
@@ -112,7 +113,6 @@
       text-decoration: none;
     }
 
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -147,10 +147,10 @@
 </head>
 <body>
   <div class="container">
-    <h1>🎬 Portfolio of Achievements</h1>
+    <h1>🎬 Portfólio de Feitos</h1>
 
     <details class="accordion">
-      <summary>📸 Photos</summary>
+      <summary>📸 Fotos</summary>
       <div class="accordion-content media-grid">
         <img src="/fotos/show1.jpg" alt="Show 1">
         <img src="/fotos/show2.jpg" alt="Show 2">
@@ -159,24 +159,24 @@
     </details>
 
     <details class="accordion">
-      <summary>🎥 Videos</summary>
+      <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <video src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc.png" preload="metadata"></video>
-        <video src="feitos/mario.mp4" controls poster="/capa/mario.png" preload="metadata"></video>
+        <video src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc.png" preload="metadata" playsinline muted></video>
+        <video src="feitos/mario.mp4" controls poster="/capa/mario.png" preload="metadata" playsinline muted></video>
       </div>
     </details>
 
     <details class="accordion">
-      <summary>📰 Publications</summary>
+      <summary>📰 Publicações</summary>
       <div class="accordion-content">
         <ul>
-          <li><a href="/publicacoes/artigo1.pdf" target="_blank">Article: Modern Web Development</a></li>
-          <li><a href="/publicacoes/entrevista_jornal.pdf" target="_blank">Interview in the Barretos Newspaper</a></li>
+          <li><a href="/publicacoes/artigo1.pdf" target="_blank">Artigo: Desenvolvimento Web Moderno</a></li>
+          <li><a href="/publicacoes/entrevista_jornal.pdf" target="_blank">Entrevista no Jornal de Barretos</a></li>
         </ul>
       </div>
     </details>
 
-    <a href="en.html" class="back-link">⬅ Back to resume</a>
+    <a href="index.html" class="back-link">⬅ Voltar para o currículo</a>
   </div>
 
   <!-- Modal -->
