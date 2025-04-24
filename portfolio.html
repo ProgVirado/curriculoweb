@@ -12,11 +12,13 @@
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
+
     body {
       background: #f7f7f7;
       color: #333;
       padding: 2rem 1rem;
     }
+
     .container {
       max-width: 800px;
       margin: auto;
@@ -25,12 +27,14 @@
       border-radius: 1rem;
       box-shadow: 0 0 20px rgba(0,0,0,0.05);
     }
+
     h1 {
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 2rem;
       text-align: center;
     }
+
     .accordion {
       margin-bottom: 1rem;
       border: 1px solid #ddd;
@@ -38,6 +42,7 @@
       overflow: hidden;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
+
     .accordion summary {
       background: #0077b6;
       color: white;
@@ -47,40 +52,50 @@
       list-style: none;
       transition: background 0.3s;
     }
+
     .accordion summary:hover {
       background: #005f91;
     }
+
     .accordion[open] summary {
       border-bottom: 1px solid #ccc;
     }
+
     .accordion-content {
       padding: 1rem;
       animation: fadeIn 0.3s ease-in-out;
     }
+
     .accordion-content ul {
       margin-top: 1rem;
       padding-left: 1.2rem;
     }
+
     .accordion-content ul li {
       margin-bottom: 0.5rem;
     }
+
     .accordion-content a {
       color: #0077b6;
       text-decoration: none;
       font-weight: 500;
     }
+
     .accordion-content a:hover {
       text-decoration: underline;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     .media-grid {
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
+
     .media-grid img, .media-grid video {
       width: 100%;
       border-radius: 0.5rem;
@@ -88,6 +103,7 @@
       cursor: pointer;
       object-fit: cover;
     }
+
     .back-link {
       display: block;
       text-align: center;
@@ -96,6 +112,7 @@
       font-weight: 600;
       text-decoration: none;
     }
+
     .modal {
       display: none;
       position: fixed;
@@ -109,12 +126,14 @@
       align-items: center;
       padding: 1rem;
     }
+
     .modal-content {
       max-width: 90%;
       max-height: 80%;
       border-radius: 0.5rem;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     }
+
     .modal .close {
       position: absolute;
       top: 20px;
@@ -142,14 +161,8 @@
     <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <video controls preload="metadata" poster="/capa/tcc.png">
-          <source src="/feitos/tcc editado (1).mp4" type="video/mp4">
-          Seu navegador não suporta o vídeo.
-        </video>
-        <video controls preload="metadata" poster="/capa/mario.png">
-          <source src="/feitos/mario.mp4" type="video/mp4">
-          Seu navegador não suporta o vídeo.
-        </video>
+        <video src="/feitos/tcc editado (1).mp4" controls poster="/capa/tcc.png" preload="metadata"></video>
+        <video src="/feitos/mario.mp4" controls poster="/capa/mario.png" preload="metadata"></video>
       </div>
     </details>
 
@@ -166,6 +179,7 @@
     <a href="index.html" class="back-link">⬅ Voltar para o currículo</a>
   </div>
 
+  <!-- Modal -->
   <div class="modal" id="modal">
     <span class="close" id="closeModal">&times;</span>
     <div id="modalContent"></div>
