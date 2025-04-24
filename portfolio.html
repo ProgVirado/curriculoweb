@@ -28,7 +28,7 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.05);
     }
 
-    h1, h2 {
+    h1 {
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 2rem;
@@ -113,6 +113,7 @@
       text-decoration: none;
     }
 
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -149,9 +150,6 @@
   <div class="container">
     <h1>🎬 Portfólio de Feitos</h1>
 
-    <h2>🔧 Teste Vídeo Fora do Accordion</h2>
-    <video src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc-editado.png" preload="auto" playsinline muted style="width:100%;border:1px solid #ccc;border-radius:8px;"></video>
-
     <details class="accordion">
       <summary>📸 Fotos</summary>
       <div class="accordion-content media-grid">
@@ -164,8 +162,8 @@
     <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <video src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc.png" preload="auto" playsinline muted></video>
-        <video src="feitos/mario.mp4" controls poster="/capa/mario.png" preload="auto" playsinline muted></video>
+        <video src="feitos/tcc editado (1).mp4" controls preload="metadata" poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."></video>
+        <video src="feitos/mario.mp4" controls preload="metadata" poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."></video>
       </div>
     </details>
 
@@ -182,6 +180,7 @@
     <a href="index.html" class="back-link">⬅ Voltar para o currículo</a>
   </div>
 
+  <!-- Modal -->
   <div class="modal" id="modal">
     <span class="close" id="closeModal">&times;</span>
     <div id="modalContent"></div>
