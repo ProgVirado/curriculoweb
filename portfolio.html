@@ -104,6 +104,22 @@
       object-fit: cover;
     }
 
+    .video-wrapper {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .poster-img, .real-video {
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid #ddd;
+      object-fit: cover;
+    }
+
+    .real-video {
+      display: none;
+    }
+
     .back-link {
       display: block;
       text-align: center;
@@ -162,8 +178,14 @@
     <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <video src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc.jpg" preload="metadata"></video>
-        <video src="feitos/mario.mp4" controls poster="/capa/mario.jpg" preload="metadata"></video>
+        <div class="video-wrapper" onclick="playVideo(this)">
+          <img src="/capa/tcc.jpg" alt="Capa TCC" class="poster-img" />
+          <video src="feitos/tcc editado (1).mp4" class="real-video" controls></video>
+        </div>
+        <div class="video-wrapper" onclick="playVideo(this)">
+          <img src="/capa/mario.jpg" alt="Capa Mario" class="poster-img" />
+          <video src="feitos/mario.mp4" class="real-video" controls></video>
+        </div>
       </div>
     </details>
 
@@ -216,6 +238,14 @@
         modalContent.innerHTML = '';
       }
     });
+
+    function playVideo(wrapper) {
+      const poster = wrapper.querySelector('.poster-img');
+      const video = wrapper.querySelector('.real-video');
+      poster.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
+    }
   </script>
 </body>
 </html>
