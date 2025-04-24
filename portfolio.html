@@ -96,12 +96,22 @@
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 
-    .media-grid img, .media-grid video {
+    .video-wrapper {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .video-wrapper img {
       width: 100%;
       border-radius: 0.5rem;
       border: 1px solid #ddd;
-      cursor: pointer;
-      object-fit: cover;
+      display: block;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      border-radius: 0.5rem;
+      display: none;
     }
 
     .back-link {
@@ -161,13 +171,13 @@
     <details class="accordion" open>
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <div>
-          <p>Capa TCC</p>
-          <video src="feitos/tcc.mp4" controls poster="/capa/tcc.png" preload="metadata"></video>
+        <div class="video-wrapper" data-video="feitos/tcc editado (1).mp4">
+          <img src="/capa/tcc.png" alt="TCC">
+          <video controls playsinline></video>
         </div>
-        <div>
-          <p>Capa Mario</p>
-          <video src="feitos/mario.mp4" controls poster="/capa/mario.png" preload="metadata"></video>
+        <div class="video-wrapper" data-video="feitos/mario.mp4">
+          <img src="/capa/mario.png" alt="Game">
+          <video controls playsinline></video>
         </div>
       </div>
     </details>
@@ -191,18 +201,27 @@
   </div>
 
   <script>
+    document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+      wrapper.addEventListener('click', () => {
+        const video = wrapper.querySelector('video');
+        const src = wrapper.getAttribute('data-video');
+        const img = wrapper.querySelector('img');
+        if (!video.src) video.src = src;
+        img.style.display = 'none';
+        video.style.display = 'block';
+        video.play();
+      });
+    });
+
+    // Modal script
     const modal = document.getElementById("modal");
     const closeModal = document.getElementById("closeModal");
     const modalContent = document.getElementById("modalContent");
 
-    document.querySelectorAll(".media-grid img, .media-grid video").forEach(el => {
+    document.querySelectorAll(".media-grid img").forEach(el => {
       el.addEventListener("click", () => {
         const clone = el.cloneNode(true);
         clone.classList.add("modal-content");
-        if (clone.tagName === "VIDEO") {
-          clone.setAttribute("controls", true);
-          clone.removeAttribute("muted");
-        }
         modalContent.innerHTML = '';
         modalContent.appendChild(clone);
         modal.style.display = "flex";
