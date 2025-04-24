@@ -93,35 +93,15 @@
     .media-grid {
       display: grid;
       gap: 1rem;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 
-    .video-thumb {
-      position: relative;
-      cursor: pointer;
-      border-radius: 0.5rem;
-      overflow: hidden;
-      border: 1px solid #ddd;
-    }
-
-    .video-thumb img {
+    .media-grid img, .media-grid video {
       width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .video-thumb .play-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 50px;
-      height: 50px;
-      background: rgba(0, 0, 0, 0.6);
-      mask: url('https://img.icons8.com/ios-filled/50/ffffff/play--v1.png') no-repeat center;
-      -webkit-mask: url('https://img.icons8.com/ios-filled/50/ffffff/play--v1.png') no-repeat center;
-      mask-size: contain;
-      -webkit-mask-size: contain;
-      transform: translate(-50%, -50%);
+      border-radius: 0.5rem;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      object-fit: cover;
     }
 
     .back-link {
@@ -131,6 +111,37 @@
       color: #0077b6;
       font-weight: 600;
       text-decoration: none;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -147,20 +158,17 @@
       </div>
     </details>
 
-    <details class="accordion">
+    <details class="accordion" open>
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-
-        <div class="video-thumb" data-video="feitos/tcc editado (1).mp4">
-          <img src="/capa/tcc.png" alt="Capa TCC">
-          <div class="play-icon"></div>
+        <div>
+          <p>Capa TCC</p>
+          <video src="feitos/tcc.mp4" controls poster="/capa/tcc.png" preload="metadata"></video>
         </div>
-
-        <div class="video-thumb" data-video="feitos/mario.mp4">
-          <img src="/capa/mario.png" alt="Capa Mario">
-          <div class="play-icon"></div>
+        <div>
+          <p>Capa Mario</p>
+          <video src="feitos/mario.mp4" controls poster="/capa/mario.png" preload="metadata"></video>
         </div>
-
       </div>
     </details>
 
@@ -177,18 +185,40 @@
     <a href="index.html" class="back-link">⬅ Voltar para o currículo</a>
   </div>
 
+  <div class="modal" id="modal">
+    <span class="close" id="closeModal">&times;</span>
+    <div id="modalContent"></div>
+  </div>
+
   <script>
-    document.querySelectorAll('.video-thumb').forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        const videoSrc = thumb.dataset.video;
-        const video = document.createElement('video');
-        video.src = videoSrc;
-        video.controls = true;
-        video.autoplay = true;
-        video.style.width = '100%';
-        video.style.borderRadius = '0.5rem';
-        thumb.replaceWith(video);
+    const modal = document.getElementById("modal");
+    const closeModal = document.getElementById("closeModal");
+    const modalContent = document.getElementById("modalContent");
+
+    document.querySelectorAll(".media-grid img, .media-grid video").forEach(el => {
+      el.addEventListener("click", () => {
+        const clone = el.cloneNode(true);
+        clone.classList.add("modal-content");
+        if (clone.tagName === "VIDEO") {
+          clone.setAttribute("controls", true);
+          clone.removeAttribute("muted");
+        }
+        modalContent.innerHTML = '';
+        modalContent.appendChild(clone);
+        modal.style.display = "flex";
       });
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+      modalContent.innerHTML = '';
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        modalContent.innerHTML = '';
+      }
     });
   </script>
 </body>
