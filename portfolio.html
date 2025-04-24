@@ -96,22 +96,11 @@
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 
-    .video-wrapper {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .video-wrapper img {
+    video {
       width: 100%;
       border-radius: 0.5rem;
-      border: 1px solid #ddd;
-      display: block;
-    }
-
-    .video-wrapper video {
-      width: 100%;
-      border-radius: 0.5rem;
-      display: none;
+      background: #000;
+      object-fit: cover;
     }
 
     .back-link {
@@ -168,17 +157,17 @@
       </div>
     </details>
 
-    <details class="accordion" open>
+    <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <div class="video-wrapper" data-video="feitos/tcc editado (1).mp4">
-          <img src="/capa/tcc.png" alt="TCC">
-          <video controls playsinline></video>
-        </div>
-        <div class="video-wrapper" data-video="feitos/mario.mp4">
-          <img src="/capa/mario.png" alt="Game">
-          <video controls playsinline></video>
-        </div>
+        <video controls preload="none" playsinline poster="/capa/tcc.png">
+          <source src="feitos/tcc editado (1).mp4" type="video/mp4">
+          Seu navegador não suporta o vídeo.
+        </video>
+        <video controls preload="none" playsinline poster="/capa/mario.png">
+          <source src="feitos/mario.mp4" type="video/mp4">
+          Seu navegador não suporta o vídeo.
+        </video>
       </div>
     </details>
 
@@ -195,24 +184,7 @@
     <a href="index.html" class="back-link">⬅ Voltar para o currículo</a>
   </div>
 
-  <div class="modal" id="modal">
-    <span class="close" id="closeModal">&times;</span>
-    <div id="modalContent"></div>
-  </div>
-
   <script>
-    document.querySelectorAll('.video-wrapper').forEach(wrapper => {
-      wrapper.addEventListener('click', () => {
-        const video = wrapper.querySelector('video');
-        const src = wrapper.getAttribute('data-video');
-        const img = wrapper.querySelector('img');
-        if (!video.src) video.src = src;
-        img.style.display = 'none';
-        video.style.display = 'block';
-        video.play();
-      });
-    });
-
     // Modal script
     const modal = document.getElementById("modal");
     const closeModal = document.getElementById("closeModal");
@@ -228,7 +200,7 @@
       });
     });
 
-    closeModal.addEventListener("click", () => {
+    closeModal?.addEventListener("click", () => {
       modal.style.display = "none";
       modalContent.innerHTML = '';
     });
