@@ -104,20 +104,19 @@
       object-fit: cover;
     }
 
-    .video-wrapper {
-      position: relative;
-      cursor: pointer;
+    /* Fallback background for videos */
+    .video-tcc {
+      background-color: #000;
+      background-image: url('/capa/tcc.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
-    .poster-img, .real-video {
-      width: 100%;
-      border-radius: 0.5rem;
-      border: 1px solid #ddd;
-      object-fit: cover;
-    }
-
-    .real-video {
-      display: none;
+    .video-mario {
+      background-color: #000;
+      background-image: url('/capa/mario.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
     .back-link {
@@ -178,14 +177,8 @@
     <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <div class="video-wrapper" onclick="playVideo(this)">
-          <img src="/capa/tcc.jpg" alt="TCC" class="poster-img" />
-          <video src="feitos/tcc editado (1).mp4" class="real-video" controls></video>
-        </div>
-        <div class="video-wrapper" onclick="playVideo(this)">
-          <img src="/capa/mario.jpg" alt="Game" class="poster-img" />
-          <video src="feitos/mario.mp4" class="real-video" controls></video>
-        </div>
+        <video class="video-tcc" src="feitos/tcc editado (1).mp4" controls poster="/capa/tcc.jpg" preload="metadata"></video>
+        <video class="video-mario" src="feitos/mario.mp4" controls poster="/capa/mario.jpg" preload="metadata"></video>
       </div>
     </details>
 
@@ -239,13 +232,14 @@
       }
     });
 
-    function playVideo(wrapper) {
-      const poster = wrapper.querySelector('.poster-img');
-      const video = wrapper.querySelector('.real-video');
-      poster.style.display = 'none';
-      video.style.display = 'block';
-      video.play();
-    }
+    // Força o carregamento das imagens de poster
+    document.querySelectorAll("video").forEach(video => {
+      const poster = video.getAttribute("poster");
+      if (poster) {
+        const img = new Image();
+        img.src = poster;
+      }
+    });
   </script>
 </body>
 </html>
