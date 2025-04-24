@@ -148,7 +148,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>🎮 Portfólio de Feitos</h1>
+    <h1>🎬 Portfólio de Feitos</h1>
 
     <details class="accordion">
       <summary>📸 Fotos</summary>
@@ -162,8 +162,14 @@
     <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <img src="/capa/tcc_converted.jpg" alt="TCC" class="video-thumb" data-video="feitos/tcc editado (1).mp4">
-        <img src="/capa/mario_converted.jpg" alt="Game" class="video-thumb" data-video="feitos/mario.mp4">
+        <div style="position: relative;">
+          <img src="/capa/tcc.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;" alt="Capa TCC">
+          <video src="feitos/tcc editado (1).mp4" controls preload="metadata" style="position:relative;z-index:2;background-color:black;width:100%;height:auto;"></video>
+        </div>
+        <div style="position: relative;">
+          <img src="/capa/mario.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;" alt="Capa Mario">
+          <video src="feitos/mario.mp4" controls preload="metadata" style="position:relative;z-index:2;background-color:black;width:100%;height:auto;"></video>
+        </div>
       </div>
     </details>
 
@@ -191,27 +197,17 @@
     const closeModal = document.getElementById("closeModal");
     const modalContent = document.getElementById("modalContent");
 
-    // Imagens (foto e vídeo thumbnails)
-    document.querySelectorAll(".media-grid img").forEach(el => {
+    document.querySelectorAll(".media-grid img, .media-grid video").forEach(el => {
       el.addEventListener("click", () => {
-        const videoSrc = el.getAttribute("data-video");
-        if (videoSrc) {
-          const video = document.createElement("video");
-          video.src = videoSrc;
-          video.controls = true;
-          video.autoplay = true;
-          video.muted = true;
-          video.className = "modal-content";
-          modalContent.innerHTML = '';
-          modalContent.appendChild(video);
-          modal.style.display = "flex";
-        } else {
-          const img = el.cloneNode(true);
-          img.className = "modal-content";
-          modalContent.innerHTML = '';
-          modalContent.appendChild(img);
-          modal.style.display = "flex";
+        const clone = el.cloneNode(true);
+        clone.classList.add("modal-content");
+        if (clone.tagName === "VIDEO") {
+          clone.setAttribute("controls", true);
+          clone.removeAttribute("muted");
         }
+        modalContent.innerHTML = '';
+        modalContent.appendChild(clone);
+        modal.style.display = "flex";
       });
     });
 
