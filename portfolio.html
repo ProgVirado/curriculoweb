@@ -96,12 +96,23 @@
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 
-    .media-grid img, .media-grid video {
+    .video-wrapper {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .video-wrapper img {
       width: 100%;
       border-radius: 0.5rem;
       border: 1px solid #ddd;
-      cursor: pointer;
       object-fit: cover;
+    }
+
+    .video-wrapper video {
+      display: none;
+      width: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid #ddd;
     }
 
     .back-link {
@@ -162,8 +173,17 @@
     <details class="accordion">
       <summary>🎥 Vídeos</summary>
       <div class="accordion-content media-grid">
-        <video src="feitos/tcc editado (1).mp4" controls preload="metadata" poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."></video>
-        <video src="feitos/mario.mp4" controls preload="metadata" poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."></video>
+
+        <div class="video-wrapper" onclick="playVideo(this)">
+          <img src="/capa/tcc.png" alt="TCC" />
+          <video src="feitos/tcc editado (1).mp4" preload="metadata" controls></video>
+        </div>
+
+        <div class="video-wrapper" onclick="playVideo(this)">
+          <img src="/capa/mario.png" alt="Game" />
+          <video src="feitos/mario.mp4" preload="metadata" controls></video>
+        </div>
+
       </div>
     </details>
 
@@ -180,19 +200,27 @@
     <a href="index.html" class="back-link">⬅ Voltar para o currículo</a>
   </div>
 
-  <!-- Modal -->
   <div class="modal" id="modal">
     <span class="close" id="closeModal">&times;</span>
     <div id="modalContent"></div>
   </div>
 
   <script>
+    function playVideo(wrapper) {
+      const img = wrapper.querySelector('img');
+      const video = wrapper.querySelector('video');
+      img.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
+    }
+
     const modal = document.getElementById("modal");
     const closeModal = document.getElementById("closeModal");
     const modalContent = document.getElementById("modalContent");
 
     document.querySelectorAll(".media-grid img, .media-grid video").forEach(el => {
-      el.addEventListener("click", () => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
         const clone = el.cloneNode(true);
         clone.classList.add("modal-content");
         if (clone.tagName === "VIDEO") {
